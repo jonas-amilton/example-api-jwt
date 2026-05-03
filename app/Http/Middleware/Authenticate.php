@@ -15,7 +15,7 @@ class Authenticate
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->check()) {
+        if (!auth('api')->check()) {
             return response()->json([
                 'message' => 'Não autorizado',
             ], 401);
