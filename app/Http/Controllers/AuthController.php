@@ -42,6 +42,6 @@ class AuthController extends Controller
 
     public function me()
     {
-        return response()->json(auth('api')->user(), 200);
+        return response()->json(auth('api')->user()->toResource(), 200);
     }
 }
