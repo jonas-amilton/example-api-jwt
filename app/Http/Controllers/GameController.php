@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GameRequest;
 use App\Models\Game;
-use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
@@ -16,7 +15,7 @@ class GameController extends Controller
 
         return response()->json([
             'message' => 'Jogo criado com sucesso',
-            'data' => $game
+            'data' => $game->toResource()
         ], 201);
 
     }
@@ -27,7 +26,7 @@ class GameController extends Controller
 
         return response()->json([
             'message' => 'Lista de jogos',
-            'data' => $games
+            'data' => $games->toResourceCollection()
         ]);
     }
 
@@ -43,7 +42,7 @@ class GameController extends Controller
 
         return response()->json([
             'message' => "Detalhes do jogo com ID: $id",
-            'data' => $game
+            'data' => $game->toResource()
         ]);
     }
 
@@ -62,7 +61,7 @@ class GameController extends Controller
 
         return response()->json([
             'message' => "Jogo com ID: $id atualizado com sucesso",
-            'data' => $game
+            'data' => $game->toResource()
         ]);
     }
 
@@ -80,7 +79,7 @@ class GameController extends Controller
 
         return response()->json([
             'message' => "Jogo com ID: $id excluído com sucesso",
-            'data' => $game
+            'data' => $game->toResource()
         ]);
     }
 }
